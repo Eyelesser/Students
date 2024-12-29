@@ -3,10 +3,10 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        School school = new School();
+        School school = new School(); // Исправление: должно быть School, а не Student
 
-        // Process students
-        File studentsFile = new File("/home/mokou/IdeaProjects/students/src/students.txt");
+        // Чтение студентов из файла
+        File studentsFile = new File("src/students.txt");
         Scanner studentScanner = new Scanner(studentsFile);
         while (studentScanner.hasNextLine()) {
             String[] studentData = studentScanner.nextLine().split(" ");
@@ -17,12 +17,11 @@ public class Main {
             for (int i = 4; i < studentData.length; i++) {
                 student.addGrade(Integer.parseInt(studentData[i]));
             }
-            school.addMember(student);
+            school.addMember(student); // Добавление студента в школу
         }
         studentScanner.close();
 
-        // Process teachers
-        File teachersFile = new File("/home/mokou/IdeaProjects/students/src/teachers.txt");
+        File teachersFile = new File("src/teachers.txt");
         Scanner teacherScanner = new Scanner(teachersFile);
         while (teacherScanner.hasNextLine()) {
             String[] teacherData = teacherScanner.nextLine().split(" ");
@@ -31,11 +30,11 @@ public class Main {
                     parseGender(teacherData[3]), teacherData[4],
                     Integer.parseInt(teacherData[5]), Integer.parseInt(teacherData[6])
             );
-            school.addMember(teacher);
+            school.addMember(teacher); // Добавление преподавателя в школу
         }
         teacherScanner.close();
 
-        // Output school members
+        // Вывод всех членов школы
         System.out.println("School Members:");
         System.out.println(school);
     }
