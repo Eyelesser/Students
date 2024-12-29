@@ -3,9 +3,7 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        School school = new School(); // Исправление: должно быть School, а не Student
-
-        // Чтение студентов из файла
+        School school = new School();
         File studentsFile = new File("src/students.txt");
         Scanner studentScanner = new Scanner(studentsFile);
         while (studentScanner.hasNextLine()) {
@@ -17,7 +15,7 @@ public class Main {
             for (int i = 4; i < studentData.length; i++) {
                 student.addGrade(Integer.parseInt(studentData[i]));
             }
-            school.addMember(student); // Добавление студента в школу
+            school.addMember(student);
         }
         studentScanner.close();
 
@@ -34,7 +32,6 @@ public class Main {
         }
         teacherScanner.close();
 
-        // Вывод всех членов школы
         System.out.println("School Members:");
         System.out.println(school);
     }
